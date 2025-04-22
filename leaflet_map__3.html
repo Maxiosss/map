@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Map with Labels</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      const map = L.map("map").setView([20, 20], 2);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+      }).addTo(map);
+
+      const places = [
+        { name: "Morze Ochockie", coordinates: [60, 145] },
+        { name: "Morze Żółte", coordinates: [35, 125] },
+        { name: "Morze Południowochińskie", coordinates: [15, 115] },
+        { name: "Morze Arabskie", coordinates: [15, 65] },
+        { name: "Morze Czerwone", coordinates: [20, 40] },
+        { name: "Morze JAWAJSKIE", coordinates: [-6, 110] },
+        { name: "Morze Śródziemne", coordinates: [35, 18] },
+        { name: "Morze Karaibskie", coordinates: [15, -75] },
+        { name: "Morze Beringa", coordinates: [58, -170] },
+        { name: "Morze Północne", coordinates: [56, 3] },
+        { name: "Morze Bałtyk", coordinates: [55, 20] },
+        { name: "Morze Czarne", coordinates: [43, 35] },
+        { name: "Morze ADRIATYCKIE", coordinates: [42, 17] },
+        { name: "Morze EGEJSKIE", coordinates: [39, 25] },
+        { name: "Morze Koralowe", coordinates: [-20, 150] },
+        { name: "Zatoka Bengalska", coordinates: [20, 90] },
+        { name: "Zatoka Perska", coordinates: [28, 50] },
+        { name: "Zatoka Gwinejska", coordinates: [4, -10] },
+        { name: "Zatoka Hudsona", coordinates: [60, -80] },
+        { name: "Zatoka Meksykańska", coordinates: [21, -90] },
+        { name: "Zatoka Kalifornijska", coordinates: [28, -114] },
+        { name: "Zatoka Biskajska", coordinates: [43, -5] },
+        { name: "Zatoka BOTNICKA", coordinates: [65, 25] },
+        { name: "Zatoka Wielka Zat. Australijska", coordinates: [-30, 135] },
+        { name: "Półwysep Kamczatka", coordinates: [55, 160] },
+        { name: "Półwysep Indochiński", coordinates: [12, 104] },
+        { name: "Półwysep Arabski", coordinates: [22, 47] },
+        { name: "Półwysep Azja Mniejsza", coordinates: [38, 27] },
+        { name: "Półwysep MALAJSKI", coordinates: [3, 101] },
+        { name: "Półwysep TAJMYR", coordinates: [77, 98] },
+        { name: "Półwysep Somalijski", coordinates: [10, 50] },
+        { name: "Półwysep Labrador", coordinates: [54, -58] },
+        { name: "Półwysep Kalifornijski", coordinates: [30, -115] },
+        { name: "Półwysep Alaska", coordinates: [61, -149] },
+        { name: "Półwysep Floryda", coordinates: [27, -81] },
+        { name: "Półwysep Skandynawski", coordinates: [62, 10] },
+        { name: "Półwysep Pirenejski (Iberyjski)", coordinates: [42, -6] },
+        { name: "Półwysep Apeniński", coordinates: [42, 12] },
+        { name: "Półwysep Bałkański", coordinates: [42, 22] },
+        { name: "Półwysep JUTLANDZKI", coordinates: [56, 10] },
+        { name: "Półwysep PELOPONEZ", coordinates: [37, 22] },
+        { name: "Półwysep KRYM", coordinates: [45, 34] },
+        { name: "Półwysep JORK", coordinates: [53, -0.6] },
+        { name: "Wyspy Japońskie", coordinates: [35, 137] },
+        { name: "Archipelag Malajski", coordinates: [4, 113] },
+        { name: "Wyspa SACHALIN", coordinates: [50, 142] },
+        { name: "Wyspa CYPR", coordinates: [35, 33] },
+        { name: "Wyspa JAWA", coordinates: [-7, 110] },
+        { name: "Wyspa Madagaskar", coordinates: [-20, 47] },
+        { name: "Wyspa Grenlandia", coordinates: [64, -50] },
+        { name: "Wyspa Kuba", coordinates: [21, -80] },
+        { name: "Wyspa GALAPAGOS", coordinates: [-0.5, -90.5] },
+        { name: "Wyspa FALKLANDY (MALWINY)", coordinates: [-51, -59] },
+        { name: "Wyspa Islandia", coordinates: [64, -21] },
+        { name: "Wyspa Irlandia", coordinates: [53, -8] },
+        { name: "Wyspa Wielka Brytania", coordinates: [54, -3] },
+        { name: "Wyspa NOWA ZIEMIA", coordinates: [74, -94] },
+        { name: "Wyspa SYCYLIA", coordinates: [37, 13] },
+        { name: "Wyspa KRETA", coordinates: [35, 25] },
+        { name: "Wyspa Nowa Zelandia", coordinates: [-40, 174] },
+        { name: "Wyspa Tasmania", coordinates: [-42, 147] },
+        { name: "Wyspa Nowa Gwinea", coordinates: [-6, 143] },
+        { name: "Wyspa HAWAJE", coordinates: [20, -156] },
+        { name: "Cieśnina BOSFOR", coordinates: [41, 29] },
+        { name: "Kanał Sueski", coordinates: [30, 32] },
+        { name: "Kanał Panamski", coordinates: [9, -79] },
+        { name: "Cieśnina Gibraltar", coordinates: [36, -5] },
+        { name: "Cieśnina LA MANCHE", coordinates: [50, -0.5] },
+        { name: "Góry Himalaje", coordinates: [28, 85] },
+        { name: "Góry Andy", coordinates: [-32, -70] },
+        { name: "Góry Karpaty", coordinates: [48, 25] },
+        { name: "Góry Alpy", coordinates: [46, 8] },
+        { name: "Rzeka Nil", coordinates: [20, 30] },
+        { name: "Rzeka Amazonka", coordinates: [-3, -60] },
+        { name: "Rzeka Dunaj", coordinates: [45, 20] },
+        { name: "Rzeka Ganges i Brahmaputra", coordinates: [25, 90] },
+        { name: "Rzeka Jangcy", coordinates: [32, 118] },
+        { name: "Rzeka Huang-ho", coordinates: [35, 105] },
+        { name: "Rzeka Ob", coordinates: [60, 80] },
+        { name: "Rzeka Jenisej", coordinates: [60, 90] },
+        { name: "Rzeka Lena", coordinates: [60, 120] },
+        { name: "Rzeka Kongo", coordinates: [-1, 16] },
+        { name: "Rzeka NIGER", coordinates: [14, 9] },
+        { name: "Rzeka ORINOKO", coordinates: [6, -63] },
+        { name: "Rzeka PARANA", coordinates: [-27, -55] },
+        { name: "Rzeka Missisipi z Missouri", coordinates: [40, -90] },
+        { name: "Rzeka RIO GRANDE", coordinates: [29, -99] },
+        { name: "Rzeka JUKON", coordinates: [64, -140] },
+        { name: "Rzeka Murray z Darling", coordinates: [-34, 145] },
+        { name: "Rzeka Wołga", coordinates: [49, 45] },
+        { name: "Rzeka Tygrys i Eufrat", coordinates: [33, 44] },
+        { name: "Jezioro Bajkał", coordinates: [53, 108] },
+        { name: "Jezioro Kaspijskie", coordinates: [40, 50] },
+        { name: "Jezioro Wiktorii", coordinates: [-2, 33] },
+        { name: "Jezioro TITICACA", coordinates: [-15, -69] },
+        { name: "Jezioro Ładoga", coordinates: [61, 31] },
+        { name: "Jezioro WINNIPEG", coordinates: [52, -98] },
+        { name: "Jezioro Wielkie Jeziora", coordinates: [47, -81] },
+        { name: "Jezioro BALATON", coordinates: [47, 17] },
+        { name: "Jezioro Czad", coordinates: [13, 14] },
+        { name: "Nizina Amazonki", coordinates: [-3, -59] },
+        { name: "Nizina La Platy", coordinates: [-35, -58] },
+        { name: "Nizina CHIŃSKA", coordinates: [35, 105] },
+        { name: "Nizina INDU", coordinates: [24, 85] },
+        { name: "Nizina Mezopotamia", coordinates: [32, 44] },
+        { name: "Nizina Gangesu", coordinates: [25, 85] },
+        { name: "Nizina Zatokowa", coordinates: [29, 45] },
+        { name: "Nizina Wschodnio-europejska", coordinates: [50, 35] },
+        { name: "Nizina Zachodnio-syberyjska", coordinates: [60, 80] },
+        { name: "Nizina Wielki Basen Artezyjski", coordinates: [-29, 134] },
+        { name: "Wyżyna Tybet", coordinates: [30, 90] },
+        { name: "Wyżyna Brazylijska", coordinates: [-7, -55] },
+        { name: "Wyżyna GUJAŃSKA", coordinates: [6, -58] },
+        { name: "Wyżyna PATAGOŃSKA", coordinates: [-51, -67] },
+        { name: "Wyżyna Wschodnio-afrykańska", coordinates: [-10, 40] },
+        { name: "Wyżyna Środkowo-syberyjska", coordinates: [60, 100] },
+        { name: "Wyżyna Irańska", coordinates: [34, 53] },
+
+        { name: "Morze Czerwone", coordinates: [20, 40] },
+        { name: "Półwysep Indyjski", coordinates: [21, 78] },
+        { name: "Archipelag Wielkie Antyle", coordinates: [18, -77] },
+        { name: "Wyspa ZIEMIA BAFFINA", coordinates: [72, -75] },
+        { name: "Wyspa NOWA FUNLANDIA", coordinates: [48, -53] },
+        { name: "Cieśnina Beringa", coordinates: [65, -170] },
+        { name: "Góry Tien-szan", coordinates: [42, 75] },
+        { name: "Góry Kaukaz", coordinates: [43, 45] },
+        { name: "Góry KARAKORUM", coordinates: [35, 77] },
+        { name: "Góry CZERSKIEGO", coordinates: [65, 115] },
+        { name: "Góry PAMIR", coordinates: [38, 73] },
+        { name: "Góry Atlas", coordinates: [32, -6] },
+        { name: "GÓRY SMOCZE", coordinates: [-28, 28] },
+        { name: "Góry Kordyliery", coordinates: [37, -105] },
+        { name: "Góry Appalachy", coordinates: [37, -81] },
+        { name: "Góry Ural", coordinates: [60, 60] },
+        { name: "Góry Skandynawskie", coordinates: [62, 10] },
+        { name: "Wielkie Góry Wododziałowe", coordinates: [-24, 148] },
+        { name: "Wyżyna MASYW CENTRALNY", coordinates: [45, 2] },
+        { name: "Nizina TURAŃSKA", coordinates: [40, 60] },
+        { name: "Jezioro Aralskie", coordinates: [45, 60] },
+        { name: "Rzeka MEKONG", coordinates: [15, 105] },
+        { name: "Jezioro ŚW. WAWRZYŃCA", coordinates: [45, -75] },
+        { name: "Rzeka REN", coordinates: [51, 6] },
+        { name: "Rzeka TAG", coordinates: [39, -8] },
+        { name: "Rzeka SEKWANA", coordinates: [49, 2] },
+        { name: "Pustynia Gobi", coordinates: [42, 105] },
+        { name: "Kotlina Kongo", coordinates: [-3, 22] },
+        { name: "Sahara", coordinates: [23, 13] },
+        { name: "Kotlina Kalahari", coordinates: [-23, 22] },
+        { name: "WIELKIE RÓWNINY", coordinates: [48, -100] },
+        { name: "Pustynia Atacama", coordinates: [-25, -69] },
+        { name: "Wielka Pustynia Piaszczysta", coordinates: [-22, 125] },
+        { name: "WIELKA RAFA KORALOWA", coordinates: [-18, 147] },
+      ];
+      places.forEach((place) => {
+        const marker = L.marker(place.coordinates).addTo(map);
+        marker.bindTooltip(place.name, {
+          permanent: false,
+          direction: "right-top",
+        });
+      });
+    </script>
+  </body>
+</html>
