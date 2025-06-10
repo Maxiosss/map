@@ -1,0 +1,155 @@
+  //   const places = [
+      //     // Seas
+      //     { name: "Morze Ochockie", coordinates: [60, 145], position: "left" },
+      //     { name: "Morze Żółte", coordinates: [35, 125], position: "right" },
+      //     {
+      //       name: "Morze Południowochińskie",
+      //       coordinates: [15, 115],
+      //       position: "left",
+      //     },
+      //     { name: "Morze Arabskie", coordinates: [15, 65], position: "right" },
+      //     { name: "Morze Czerwone", coordinates: [20, 40], position: "left" },
+      //     { name: "Morze Śródziemne", coordinates: [35, 18], position: "right" },
+      //     { name: "Morze Karaibskie", coordinates: [15, -75], position: "left" },
+      //     { name: "Morze Beringa", coordinates: [58, -170], position: "right" },
+      //     { name: "Morze Bałtyckie", coordinates: [55, 20], position: "left" },
+      //     { name: "Morze Czarne", coordinates: [43, 35], position: "right" },
+      //     { name: "Morze Koralowe", coordinates: [-20, 150], position: "left" },
+
+      //     // Bays
+      //     { name: "Zatoka Bengalska", coordinates: [20, 90], position: "right" },
+      //     { name: "Zatoka Perska", coordinates: [26, 52], position: "left" },
+      //     { name: "Zatoka Gwinejska", coordinates: [5, 0], position: "right" },
+      //     { name: "Zatoka Hudsona", coordinates: [60, -80], position: "left" },
+      //     {
+      //       name: "Zatoka Meksykańska",
+      //       coordinates: [25, -90],
+      //       position: "right",
+      //     },
+      //     {
+      //       name: "Zatoka Kalifornijska",
+      //       coordinates: [28, -113],
+      //       position: "left",
+      //     },
+      //     { name: "Zatoka Biskajska", coordinates: [45, -5], position: "right" },
+      //     {
+      //       name: "Wielka Zat. Australijska",
+      //       coordinates: [-35, 130],
+      //       position: "left",
+      //     },
+
+      //     // Peninsulas
+      //     {
+      //       name: "Półwysep Kamczatka",
+      //       coordinates: [60, 160],
+      //       position: "right",
+      //     },
+      //     {
+      //       name: "Półwysep Indochiński",
+      //       coordinates: [12, 105],
+      //       position: "left",
+      //     },
+      //     { name: "Półwysep Arabski", coordinates: [23, 45], position: "right" },
+      //     {
+      //       name: "Półwysep Azja Mniejsza",
+      //       coordinates: [39, 35],
+      //       position: "left",
+      //     },
+      //     {
+      //       name: "Półwysep Somalijski",
+      //       coordinates: [10, 50],
+      //       position: "right",
+      //     },
+      //     { name: "Półwysep Labrador", coordinates: [53, -65], position: "left" },
+      //     {
+      //       name: "Półwysep Kalifornijski",
+      //       coordinates: [26, -112],
+      //       position: "right",
+      //     },
+      //     { name: "Półwysep Alaska", coordinates: [55, -160], position: "left" },
+      //     { name: "Półwysep Floryda", coordinates: [27, -81], position: "right" },
+      //     {
+      //       name: "Półwysep Skandynawski",
+      //       coordinates: [62, 15],
+      //       position: "left",
+      //     },
+      //     {
+      //       name: "Półwysep Pirenejski",
+      //       coordinates: [40, -4],
+      //       position: "right",
+      //     },
+      //     { name: "Półwysep Apeniński", coordinates: [42, 13], position: "left" },
+      //     {
+      //       name: "Półwysep Bałkański",
+      //       coordinates: [41, 22],
+      //       position: "right",
+      //     },
+
+      //     // Islands and Archipelagos
+      //     { name: "Wyspy Japońskie", coordinates: [36, 138], position: "left" },
+      //     {
+      //       name: "Archipelag Malajski",
+      //       coordinates: [0, 118],
+      //       position: "right",
+      //     },
+      //     { name: "Madagaskar", coordinates: [-20, 47], position: "left" },
+      //     { name: "Grenlandia", coordinates: [72, -40], position: "right" },
+      //     { name: "Kuba", coordinates: [22, -80], position: "left" },
+      //     {
+      //       name: "Archipelag Wielkie Antyle",
+      //       coordinates: [19, -75],
+      //       position: "right",
+      //     },
+      //     { name: "Ziemia Ognista", coordinates: [-54, -68], position: "left" },
+      //     { name: "Islandia", coordinates: [65, -18], position: "right" },
+      //     { name: "Irlandia", coordinates: [53, -8], position: "left" },
+      //     { name: "Wielka Brytania", coordinates: [54, -2], position: "right" },
+      //     { name: "Nowa Zelandia", coordinates: [-41, 174], position: "left" },
+      //     { name: "Tasmania", coordinates: [-42, 147], position: "right" },
+      //     { name: "Nowa Gwinea", coordinates: [-5, 141], position: "left" },
+
+      //     // Straits and Canals
+      //     {
+      //       name: "Cieśnina Beringa",
+      //       coordinates: [66, -169],
+      //       position: "right",
+      //     },
+      //     { name: "Kanał Sueski", coordinates: [30, 32], position: "left" },
+      //     { name: "Kanał Panamski", coordinates: [9, -79], position: "right" },
+      //     {
+      //       name: "Cieśnina Gibraltarska",
+      //       coordinates: [36, -5],
+      //       position: "left",
+      //     },
+
+      //     // Rivers
+      //     { name: "Rzeka Jangcy", coordinates: [30, 111], position: "left" },
+      //     { name: "Rzeka Huang-ho", coordinates: [36, 114], position: "right" },
+      //     { name: "Rzeka Ob", coordinates: [60, 70], position: "left" },
+      //     { name: "Rzeka Jenisej", coordinates: [55, 92], position: "right" },
+      //     { name: "Rzeka Lena", coordinates: [66, 123], position: "left" },
+      //     { name: "Rzeka Ganges", coordinates: [25, 85], position: "right" },
+      //     { name: "Rzeka Nil", coordinates: [30, 31], position: "left" },
+      //     { name: "Rzeka Amazonka", coordinates: [-3, -60], position: "right" },
+
+      //     // Lakes
+      //     {
+      //       name: "Jezioro Kaspijskie",
+      //       coordinates: [41, 51],
+      //       position: "right",
+      //     },
+      //     { name: "Jezioro Bajkał", coordinates: [53, 108], position: "left" },
+      //     { name: "Jezioro Aralskie", coordinates: [45, 60], position: "right" },
+      //     { name: "Jezioro Wiktorii", coordinates: [-1, 33], position: "left" },
+      //     { name: "Jezioro Czad", coordinates: [13, 14], position: "right" },
+
+      //     // Deserts
+      //     { name: "Pustynia Gobi", coordinates: [42, 105], position: "left" },
+      //     { name: "Sahara", coordinates: [25, 13], position: "right" },
+      //     { name: "Pustynia Atacama", coordinates: [-24, -69], position: "left" },
+      //     {
+      //       name: "Wielka Pustynia Piaszczysta",
+      //       coordinates: [-20, 128],
+      //       position: "right",
+      //     },
+      //   ];
