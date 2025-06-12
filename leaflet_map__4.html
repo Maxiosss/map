@@ -210,7 +210,7 @@
 
     function askNextQuestion() {
       if (currentIndex >= total) {
-        questionEl.textContent = `🎉 Гру завершено! Ви набрали ${score} із ${total} очок.`;
+        questionEl.textContent = `🎉 Koniec gry! Masz ${score}/${total} punktów .`;
         map.off("click");
         return;
       }
